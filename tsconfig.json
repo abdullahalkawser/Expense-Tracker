@@ -12,6 +12,13 @@
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-, "utils/styling.js", "constants/data.js", "constants/index.js", "constants/theme.js"  ]
+    "expo-env.d.ts",
+    "utils/styling.js",
+    "constants/data.js",
+    "constants/index.js",
+    "constants/theme.js",
+    "app/+not-found.jsx",
+    "app/_layout.jsx",
+    "nativewind-env.d.ts"
+  ]
 }
