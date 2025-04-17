@@ -28,36 +28,36 @@ const Signin = () => {
         {/* Input Fields */}
         <View className="mb-5">
           {/* Name Input */}
-          <View className="flex-row items-center bg-gray-800 rounded-2xl px-4 py-4 shadow-md shadow-black/30 mb-5">
+          <View className="flex-row items-center bg-black/50 rounded-2xl px-4 py-4 shadow-lg mb-6">
             <Icon name="person-outline" size={22} color="#a3a3a3" />
             <TextInput
               placeholder="Full Name"
               placeholderTextColor="#a3a3a3"
-              className="ml-3 flex-1 text-white text-base"
+              className="ml-3 flex-1 text-white text-base  bg-transparent"
             />
           </View>
 
           {/* Email Input */}
-          <View className="flex-row items-center bg-gray-800 rounded-2xl px-4 py-4 shadow-md shadow-black/30 mb-5">
+          <View className="flex-row items-center bg-black/50 rounded-2xl px-4 py-4 shadow-lg mb-6">
             <Icon name="mail-outline" size={22} color="#a3a3a3" />
             <TextInput
               placeholder="Email Address"
               placeholderTextColor="#a3a3a3"
-              className="ml-3 flex-1 text-white text-base"
+              className="ml-3 flex-1 text-white text-base bg-transparent"
               keyboardType="email-address"
             />
           </View>
 
-          {/* Password Input */}
-          <View className="flex-row items-center bg-gray-800 rounded-2xl px-4 py-4 shadow-md shadow-black/30 mb-6">
-            <Icon name="lock-closed-outline" size={22} color="#a3a3a3" />
-            <TextInput
-              placeholder="Password"
-              placeholderTextColor="#a3a3a3"
-              className="ml-3 flex-1 text-white text-base"
-              secureTextEntry
-            />
-          </View>
+{/* Password Input */}
+<View className="flex-row items-center bg-black/50 rounded-2xl px-4 py-4 shadow-lg mb-6">
+  <Icon name="lock-closed-outline" size={22} color="#a3a3a3" />
+  <TextInput
+    placeholder="Password"
+    placeholderTextColor="#a3a3a3"
+    className="ml-3 flex-1 text-white text-base bg-transparent"
+    secureTextEntry
+  />
+</View>
         </View>
 
         {/* Signup Button */}
