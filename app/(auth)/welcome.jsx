@@ -32,23 +32,25 @@ const Welcome = () => {
         </Text>
 
         {/* Action Button */}
-        <TouchableOpacity
-          style={{
-            backgroundColor: '#4CAF50',
-            paddingVertical: 15,
-            paddingHorizontal: 30,
-            borderRadius: 30,
-            shadowColor: '#000',
-            shadowOffset: { width: 0, height: 5 },
-            shadowOpacity: 0.3,
-            shadowRadius: 6,
-            elevation: 8,
-          }}
-          onPress={() => console.log('Button Pressed')}>
-          <Text style={{ color: '#fff', fontSize: 18, fontWeight: '600', textAlign: 'center' }}>
-            Get Started
-          </Text>
-        </TouchableOpacity>
+        <Link href="/home" asChild>
+  <TouchableOpacity
+    style={{
+      backgroundColor: '#4CAF50',
+      paddingVertical: 15,
+      paddingHorizontal: 30,
+      borderRadius: 30,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 5 },
+      shadowOpacity: 0.3,
+      shadowRadius: 6,
+      elevation: 8,
+    }}
+  >
+    <Text style={{ color: '#fff', fontSize: 18, fontWeight: '600', textAlign: 'center' }}>
+      Get Started
+    </Text>
+  </TouchableOpacity>
+</Link>
       </View>
     </ScreenWrapper>
   );
