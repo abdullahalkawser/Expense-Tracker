@@ -18,7 +18,7 @@ const ExpenseChartScreen = () => {
 
         {/* Header */}
         <View className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 p-6 rounded-b-3xl mb-6 shadow-md">
-          <Text className="text-3xl font-bold text-center ">My Expenses</Text>
+          <Text className="text-3xl font-bold text-center pt-2 ">My Expenses</Text>
           <Text className="text-sm text-white opacity-80 mt-1">Summary (private)</Text>
           <View className="flex-row items-center mt-2">
             <Text className="text-sm text-white mr-2">07 Feb, 2019</Text>
