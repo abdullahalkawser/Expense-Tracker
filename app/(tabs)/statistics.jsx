@@ -1,113 +1,112 @@
-import { View, Text, ScrollView, Dimensions } from 'react-native';
 import React from 'react';
-import { FontAwesome5, MaterialIcons } from '@expo/vector-icons';
-import { LineChart } from 'react-native-chart-kit';
+import { View, Text, ScrollView, Dimensions } from 'react-native';
+import { PieChart, BarChart } from 'react-native-chart-kit';
 
 const screenWidth = Dimensions.get('window').width;
 
-const statsData = [
-  {
-    label: 'Total Posts',
-    value: 124,
-    icon: <FontAwesome5 name="file-alt" size={24} color="#3b82f6" />,
-    bgColors: ['#bfdbfe', '#60a5fa'],
-    textColor: 'text-blue-800',
-  },
-  {
-    label: 'Followers',
-    value: 890,
-    icon: <MaterialIcons name="group" size={24} color="#10b981" />,
-    bgColors: ['#a7f3d0', '#34d399'],
-    textColor: 'text-green-800',
-  },
+const data = [
+  { name: 'Education', amount: 94, color: '#4BC0C0', legendFontColor: '#7F7F7F', legendFontSize: 14 },
+  { name: 'Beauty & Care', amount: 45.65, color: '#FF6384', legendFontColor: '#7F7F7F', legendFontSize: 14 },
+  { name: 'Child', amount: 34.9, color: '#FFCE56', legendFontColor: '#7F7F7F', legendFontSize: 14 },
+  { name: 'Food', amount: 12.54, color: '#36A2EB', legendFontColor: '#7F7F7F', legendFontSize: 14 },
 ];
 
-const chartData = {
-  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-  datasets: [
-    {
-      data: [120, 150, 170, 180, 200, 250],
-      strokeWidth: 3,
-    },
-  ],
-};
-
-const chartConfig = {
-  backgroundGradientFrom: '#f9fafb',
-  backgroundGradientTo: '#f9fafb',
-  decimalPlaces: 0,
-  color: (opacity = 1) => `rgba(59, 130, 246, ${opacity})`,
-  labelColor: (opacity = 1) => `rgba(107, 114, 128, ${opacity})`,
-  style: {
-    borderRadius: 20,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
-    elevation: 5,
-  },
-  propsForDots: {
-    r: '6',
-    strokeWidth: '3',
-    stroke: '#3b82f6',
-  },
-};
-
-const Statistis = () => {
+const ExpenseChartScreen = () => {
   return (
-    <ScrollView className="flex-1 bg-gray-50 p-4 mt-28">
-      {/* Page Title */}
-      <Text className="text-4xl font-bold text-gray-800 mb-6 text-center">📊 Statistics Dashboard</Text>
+    <View className="flex-1 bg-white mt-1">
+      <ScrollView className="pt-10 mb-20">
 
-
-      {/* Stats Cards */}
-      <View className="space-y-4">
-        {statsData.map((stat, index) => (
-          <View
-            key={index}
-            style={{
-              backgroundColor: stat.bgColors[0],
-              borderRadius: 20,
-              padding: 20,
-              marginBottom: 16,
-              shadowColor: '#000',
-              shadowOpacity: 0.15,
-              shadowRadius: 10,
-              elevation: 10,
-            }}
-          >
-            <View className="flex-row items-center justify-between">
-              <View className="flex-row items-center">
-                {stat.icon}
-                <Text className={`ml-4 text-xl font-semibold ${stat.textColor}`}>{stat.label}</Text>
-              </View>
-              <Text className={`text-3xl font-bold ${stat.textColor}`}>{stat.value}</Text>
-            </View>
+        {/* Header */}
+        <View className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 p-6 rounded-b-3xl mb-6 shadow-md">
+          <Text className="text-3xl font-bold text-center ">My Expenses</Text>
+          <Text className="text-sm text-white opacity-80 mt-1">Summary (private)</Text>
+          <View className="flex-row items-center mt-2">
+            <Text className="text-sm text-white mr-2">07 Feb, 2019</Text>
+            <Text className="text-xs text-white opacity-80">18% more than last month</Text>
           </View>
-        ))}
-      </View>
+        </View>
 
-      {/* Chart Section */}
-      <View className="mt-8">
-        <Text className="text-2xl font-semibold text-gray-700 mb-4 text-center">📈 Growth Over Time</Text>
-        <LineChart
-          data={chartData}
-          width={screenWidth - 32}
-          height={250}
-          chartConfig={chartConfig}
-          bezier
-          style={{
-            borderRadius: 20,
-            paddingHorizontal: 16,
-            paddingVertical: 10,
-            shadowColor: '#000',
-            shadowOpacity: 0.1,
-            shadowRadius: 15,
-            elevation: 5,
-          }}
-        />
-      </View>
-    </ScrollView>
+        {/* Pie Chart Section */}
+        <Text className="text-xl font-semibold text-gray-800 px-4 mb-2">Categories</Text>
+        <View className="bg-white rounded-2xl mx-4 px-2 py-4 shadow-lg mb-8">
+          <PieChart
+            data={data.map(item => ({
+              name: item.name,
+              population: item.amount,
+              color: item.color,
+              legendFontColor: item.legendFontColor,
+              legendFontSize: item.legendFontSize,
+            }))}
+            width={screenWidth - 40}
+            height={220}
+            chartConfig={{
+              backgroundColor: '#fff',
+              backgroundGradientFrom: '#fff',
+              backgroundGradientTo: '#fff',
+              color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+            }}
+            accessor="population"
+            backgroundColor="transparent"
+            paddingLeft="15"
+            absolute
+          />
+          <Text className="text-lg font-semibold text-gray-800 text-center mt-4">12 Expenses</Text>
+        </View>
+
+        {/* Category List */}
+        <View className="mx-4 px-4 py-4 bg-gray-100 rounded-2xl mb-6 shadow-sm">
+          {data.map((item, index) => (
+            <View key={index} className="flex-row items-center justify-between mb-3">
+              <View className="flex-row items-center">
+                <View style={{ backgroundColor: item.color }} className="w-4 h-4 rounded-full mr-3" />
+                <Text className="text-base text-gray-700">{item.name}</Text>
+              </View>
+              <Text className="text-base text-gray-600 font-medium">
+                {item.amount.toFixed(2)} USD - {Math.round((item.amount / 177.09) * 100)}%
+              </Text>
+            </View>
+          ))}
+        </View>
+
+        {/* RGB Bar Chart */}
+        <Text className="text-xl font-semibold text-gray-800 px-4 mb-2">RGB Chart</Text>
+        <View className="bg-white mx-4 px-4 py-4 rounded-2xl shadow-lg mb-12">
+          <BarChart
+            data={{
+              labels: data.map(item => item.name),
+              datasets: [
+                {
+                  data: data.map(item => item.amount),
+                },
+              ],
+            }}
+            width={screenWidth - 60}
+            height={220}
+            fromZero
+            chartConfig={{
+              backgroundColor: '#fff',
+              backgroundGradientFrom: '#fff',
+              backgroundGradientTo: '#fff',
+              decimalPlaces: 2,
+              color: (opacity = 1) => `rgba(75,192,192,${opacity})`,
+              labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+              style: {
+                borderRadius: 16,
+              },
+              propsForBackgroundLines: {
+                strokeDasharray: '',
+              },
+            }}
+            style={{
+              marginVertical: 8,
+              borderRadius: 16,
+            }}
+          />
+        </View>
+
+      </ScrollView>
+    </View>
   );
 };
 
-export default Statistis;
+export default ExpenseChartScreen;
