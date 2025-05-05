@@ -39,7 +39,7 @@ const Home = () => {
               source={{ uri: 'https://i.pravatar.cc/300' }}
               className="w-10 h-10 rounded-full"
             />
-            <Text className="text-white text-lg font-semibold"> Hi, Abdullah Al Kawser</Text>
+            <Text className="text-white text-lg font-semibold"> Hi, Abdullah  Kawser</Text>
           </View>
           <TouchableOpacity onPress={() => console.log('Logout')}>
             <MaterialIcons name="logout" size={24} color="white" />
